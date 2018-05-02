@@ -23,6 +23,13 @@ Teensy 3.2
 We've made a number of test sketches for reading the sensors in the T-Stick.
 See the `sketches` folder.
 
+## Development images
+<img src="https://raw.githubusercontent.com/mademakerspace/tstick/master/images/1-heatshrink.jpg" width="500px">
+<img src="https://raw.githubusercontent.com/mademakerspace/tstick/master/images/2-prototype.jpg" width="500px">
+<img src="https://raw.githubusercontent.com/mademakerspace/tstick/master/images/3-internal.jpg" width="500px">
+<img src="https://raw.githubusercontent.com/mademakerspace/tstick/master/images/4-complete.jpg" width="500px">
+<img src="https://raw.githubusercontent.com/mademakerspace/tstick/master/images/5-heatshrink.jpg" width="500px">
+
 ### Resources
 
 * https://josephmalloch.wordpress.com/mumt619/
