@@ -2,7 +2,7 @@
 
 ADC *adc = new ADC();
 
-const int touch_steady[] = {987, 990, 984, 985, 984, 984, 987, 984, 1002, 998, 988, 979, 1000, 983, 984, 997, 887, 887, 887, 887, 887, 887, 887, 866, 873, 876, 865, 880, 887, 904, 888, 911, 917, 933, 913, 912, 912, 932, 931, 912, 916, 913, 912, 913, 935, 934, 900, 911};
+const int touch_steady[] = {3328, 3337, 3323, 3328, 3322, 3334, 3371, 3369, 3389, 3384, 3371, 3302, 3401, 3368, 3383, 3392, 3001, 3002, 2999, 3000, 3001, 3008, 2999, 2968, 2978, 2980, 2946, 2990, 3032, 3080, 3064, 3086, 3140, 3154, 3121, 3089, 3092, 3146, 3144, 3109, 3129, 3121, 3096, 3092, 3159, 3137, 3047, 3070};
 
 const int muxCtrlPin1 = 0;
 const int muxCtrlPin2 = 1;
@@ -30,10 +30,10 @@ void setup() {
   pinMode(muxCtrlPin4, OUTPUT);
   Serial.begin(9600);
 
-  adc->setAveraging(8, ADC_0); // set number of averages
-  adc->setResolution(12, ADC_0); // set bits of resolution
-  adc->setConversionSpeed(ADC_CONVERSION_SPEED::HIGH_SPEED, ADC_0); // change the conversion speed
-  adc->setSamplingSpeed(ADC_SAMPLING_SPEED::MED_SPEED, ADC_0); // change the sampling speed
+  adc->adc0->setAveraging(8); // set number of averages
+  adc->adc0->setResolution(12); // set bits of resolution
+  adc->adc0->setConversionSpeed(ADC_CONVERSION_SPEED::HIGH_SPEED); // change the conversion speed
+  adc->adc0->setSamplingSpeed(ADC_SAMPLING_SPEED::MED_SPEED); // change the sampling speed
 
   // always call the compare functions after changing the resolution!
   //adc->enableCompare(1.0/3.3*adc->getMaxValue(ADC_0), 0, ADC_0); // measurement will be ready if value < 1.0V
@@ -96,7 +96,7 @@ void loop() {
   for (int i = 0; i < TOUCH_PER_MPLEX * NUM_MUX; i++) {
       last = last_touch[i];
 
-      port_active = current_touch_raw[i] > touch_steady[i] + 40;
+      port_active = current_touch_raw[i] > touch_steady[i] + 100;
 
       midi_note = 50 + i;
       if (last == 0 && port_active) {
@@ -107,13 +107,9 @@ void loop() {
       last_touch[i] = port_active;
 
       //Serial.print(current_touch_raw[i]);
-      Serial.print(port_active);
-      Serial.print("-");
-      
-    
+      //Serial.print(port_active);
+      //Serial.print("-");
   }
-  Serial.println();
+  //Serial.println();
   delay(2);
 }
-
-
